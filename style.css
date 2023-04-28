@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+div#game-board{
+    width: 600px;
+    height: 600px;
+    background-image: url(https://media.giphy.com/media/3ov9k1173PdfJWRsoE/giphy.gif);
+    background-size: cover;
+    position: relative;
+}
+
+div#plane{
+    width: 55px;
+    height: 60px;
+    background-image: url(https://i.pinimg.com/originals/3b/03/94/3b0394153492f7a2e31e80bb9e4c4fb5.gif);
+    background-size: cover;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.laser{
+    background-image: url(https://th.bing.com/th/id/R.5088796250df2a3abc72dd97b14ecd47?rik=HXDFdyUEcPgj9A&riu=http%3a%2f%2fblog-marketing-video.fr%2fwp-content%2fuploads%2f2015%2f12%2fsabre-laser-seul.png&ehk=PDcI667xTvhh9pDG2GUKYEIa14VnMZTmZUskCyOT3uE%3d&risl=&pid=ImgRaw&r=0);
+    width: 20px;
+    background-size: cover;
+    height: 40px;
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
