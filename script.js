@@ -6,12 +6,12 @@ let position = 50;
 document.addEventListener("keypress", function(keyboard){
     if (keyboard.key == "d"){
         if (position < 95){
-            position += 5;
+            position += 1;
         }
         plane.style.left = `${position}%`;
     } else if(keyboard.key == "a"){
         if (position > 5){
-            position -= 5;
+            position -= 1;
         }
         plane.style.left = `${position}%`;
     }
