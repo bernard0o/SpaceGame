@@ -4,8 +4,6 @@ body{
     justify-content: center;
     height: 100vh;
     overflow: hidden;
-    background-image: url(https://media.giphy.com/media/3ov9k1173PdfJWRsoE/giphy.gif);
-    background-size: cover;
 }
 div#game-board{
     width: 600px;
