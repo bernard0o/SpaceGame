@@ -22,6 +22,7 @@ div#plane{
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    transition: all 100ms ease-in;
 }
 
 .laser{
@@ -40,5 +41,6 @@ div#plane{
     height: 50px;
     background-image: url(enemy.png);
     position: absolute;
+    transition: all 200ms ease-in;
     background-size: cover;
 }
