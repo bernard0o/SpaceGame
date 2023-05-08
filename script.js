@@ -79,7 +79,7 @@ setInterval(function(){
         }
         div.style.bottom = `${bottom}px`
     }, 50)
-}, 400);
+}, 800);
 
 //Detect if laser touches any enemy
 let detect = setInterval(function(){
