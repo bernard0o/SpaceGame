@@ -4,13 +4,27 @@ body{
     justify-content: center;
     height: 100vh;
     overflow: hidden;
+    background-color: rgb(36, 36, 36);
 }
 div#game-board{
-    width: 600px;
-    height: 600px;
+    height: 90vh;
+    width: 90vw;
+    max-width: 600px;
+    max-height: 600px;
     background-image: url(https://media.giphy.com/media/3ov9k1173PdfJWRsoE/giphy.gif);
     background-size: cover;
     position: relative;
+    overflow: hidden;
+}
+
+div#gameOver{
+    height: 90vh;
+    width: 90vw;
+    max-width: 600px;
+    max-height: 600px;
+    position: relative;
+    display: none;
+    background-color: white;
 }
 
 div#plane{
@@ -37,8 +51,8 @@ div#plane{
 }
 
 .enemy{
-    width: 40px;
-    height: 50px;
+    width: 50px;
+    height: 60px;
     background-image: url(enemy.png);
     position: absolute;
     transition: all 200ms ease-in;

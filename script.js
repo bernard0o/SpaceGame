@@ -6,6 +6,21 @@ let moveLeft = 0;
 let lasersPosition = [];
 let enemiesPosition = [];
 
+function checkCollision(elm1, elm2) {
+    var elm1Rect = elm1.getBoundingClientRect();
+    var elm2Rect = elm2.getBoundingClientRect();
+  
+    return (elm1Rect.right >= elm2Rect.left &&
+        elm1Rect.left <= elm2Rect.right) &&
+      (elm1Rect.bottom >= elm2Rect.top &&
+        elm1Rect.top <= elm2Rect.bottom);
+  }
+
+function gameOver(){
+    gameBoard.style.display = "none";
+    document.getElementById("gameOver").style.display = "block";
+}
+
 // Main character moviment
 document.addEventListener("keypress", function(keyboard){
     if (keyboard.key == "d" || keyboard.key == "ArrowRight"){
@@ -32,7 +47,6 @@ document.addEventListener("keypress", function(keyboard){
 
 // Enemies
 setInterval(function(){
-
     //Creating enemy div
     let random = Math.floor(Math.random() * 90);
     let top = -5;
@@ -40,27 +54,21 @@ setInterval(function(){
     div.className = "enemy";
     gameBoard.appendChild(div);
     div.style.left = `${random}%`;
-
     //Loop to go down
     setInterval(function(){
         top += 10;
-
         // If enemy arrives bottom
         if (top >= 500){
-            div.style.backgroundImage = "url(explosion.gif)";
-            div.style.width = "50px"
-            setTimeout(function(){
-                div.remove();
-            }, 500)
+            div.remove();
+            gameOver();
         }
         div.style.top = `${top}px`
-    }, 200)
+    }, 150)
 }, 2000);
 
 
 // Lasers
 setInterval(function(){
-
     //Creating laser div
     let bottom = 70;
     let div = document.createElement("div");
@@ -79,23 +87,24 @@ setInterval(function(){
         }
         div.style.bottom = `${bottom}px`
     }, 50)
-}, 800);
+}, 500);
 
 //Detect if laser touches any enemy
 let detect = setInterval(function(){
-    lasersPosition = [];
-    const gameBoardChilds = gameBoard.children;
-    for (let i = 0; i < gameBoardChilds.length; i++){
-        if (gameBoardChilds[i].className == "laser"){
-            lasersPosition.push([gameBoardChilds[i].getBoundingClientRect().bottom, gameBoardChilds[i].getBoundingClientRect().left]);
-        }
-        else if (gameBoardChilds[i].className == "enemy"){
-            enemiesPosition.push([gameBoardChilds[i].getBoundingClientRect().bottom, gameBoardChilds[i].getBoundingClientRect().left]);
+    const lasers = document.getElementsByClassName("laser");
+    const enemies = document.getElementsByClassName("enemy");
+    for (const laser of lasers) {
+        for (const enemy of enemies) {
+            if (checkCollision(laser, enemy)){
+                enemy.style.backgroundImage = "url(explosion.gif)";
+                enemy.style.width = "60px";
+                setTimeout(function(){
+                    enemy.remove();
+                    laser.remove();
+                }, 300)
+                
+            }
         }
     }
-    for (let i2=0; i2 < lasersPosition.length; i2++){
-        if (enemiesPosition.includes(lasersPosition[i2])){
-            lasersPosition[i2].remove();
-        }
-    }
+
 }, 50);
